@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://facebook.github.io/react/downloads/single-file-example.html -->
+<html data-livestyle-extension="available">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
+  <title>Hello World</title>
+  <script src="./react_files/react.js"></script>
+  <script src="./react_files/react-dom.js"></script>
+  <script src="./react_files/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      class SubHead extends React.Component {
+        render() {
+          return (<h3>How you doin?</h3>)
+        }
+      }
+
+      function Hello(props) {
+        return <h5>Hello, {props.name}</h5>;
+      }
+
+      class Hey extends React.Component {
+        render() {
+          return <h5>Hey, {this.props.name}</h5>;
+        }
+      }
+
+      const Timer = (props) => {
+        return (<h3>It is {props.time}.</h3>)      
+      }
+
+      const element1 = <Hello name="Sara" />;
+      const element2 = <Hey name="Sara" />;
+      const app = (
+        <div>
+            <h1>Hello, world!</h1>
+            {element1}
+            {element2}
+            <SubHead />
+        </div>
+      )
+
+      ReactDOM.render(
+          <div>{app}</div>, document.getElementById('root')
+      );
+
+      const tick = () => {
+        const newdate = new Date().toLocaleTimeString()
+        ReactDOM.render(
+            <Timer time={newdate}/>, document.getElementById('root')
+        );        
+      }
+      setInterval(tick, 1000);
+
+    </script>
+  </body>
+</html>
